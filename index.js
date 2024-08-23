@@ -45,7 +45,8 @@ app.get('/api/data',async (req, res) => {
   // // Send the data as a response
   // res.status(200).json({ data });
 
-  let payload= req.query.search
+  const queryText = req.query.search;
+const payload = queryText.toUpperCase();
   const db = mongoose.connection.db;
     
   // Check if the database connection is available
@@ -138,6 +139,12 @@ app.get('/api/data',async (req, res) => {
 
   // Send the data as a JSON response
   res.status(200).json({ data });
+
+});
+app.get('/test',async (req, res) => {
+  
+  // Send the data as a JSON response
+  res.status(200).json({ message: "server is running" });
 
 });
 
